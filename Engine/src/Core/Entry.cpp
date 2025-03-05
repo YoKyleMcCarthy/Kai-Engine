@@ -2,6 +2,7 @@
 #include <chrono>
 #include <Scene/SceneManager.hpp>
 #include <Scene/EntryScene.hpp>
+#include <Asset/AssetManager.hpp>
 #include <Window/Window.hpp>
 #include <Camera/Camera.hpp>
 #include <SDL3/SDL.h>
@@ -13,6 +14,7 @@ int main() {
     const int height = 720;
     Window window("Engine Dev alpha 0.1", Vec2<float>(width, height));
     SDL_Renderer* renderer = SDL_CreateRenderer(window.Get(), NULL);
+    SceneManager::GetInstance()->setRenderer(renderer);
     SceneManager::GetInstance()->setCurrentScene(new EntryScene());
     Camera* camera = new Camera(Vec2<float>(0,0), Vec2<float>(width,height));
     SceneManager::GetInstance()->camera = camera;

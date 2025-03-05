@@ -22,12 +22,17 @@ SceneManager* SceneManager::GetInstance() {
     return instance;
 }
 
+void SceneManager::setRenderer(SDL_Renderer* renderer) {
+    this->renderer = renderer;
+}
+
 void SceneManager::setCurrentScene(Scene* newScene) {
     if(currentScene != nullptr) {
         currentScene->Destroy();
         delete currentScene;
     }
     currentScene = newScene;
+    currentScene->prepare(renderer);
     currentScene->Init();
 }
 

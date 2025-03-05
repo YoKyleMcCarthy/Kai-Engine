@@ -6,6 +6,7 @@ private:
     static SceneManager* instance;
     Scene* currentScene;
     Scene* globalScene;
+    SDL_Renderer* renderer;
 protected:
     SceneManager();
 public:
@@ -17,6 +18,8 @@ public:
 
     void setCurrentScene(Scene* scene);
     void setGlobalScene(Scene* scene);
+    void setRenderer(SDL_Renderer* renderer);
+    SDL_Renderer* getRenderer() { return renderer; }
 
     void Update(float deltaTime);
     void Destroy();
