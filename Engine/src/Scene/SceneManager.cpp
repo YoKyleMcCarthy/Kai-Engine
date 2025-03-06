@@ -46,8 +46,14 @@ void SceneManager::setGlobalScene(Scene* scene) {
 }
 
 void SceneManager::Destroy() {
-    delete currentScene;
-    delete globalScene;
+    if(currentScene != nullptr) {
+        currentScene->Destroy();
+        delete currentScene;
+    }
+    if(globalScene != nullptr) {
+        globalScene->Destroy();
+        delete globalScene;
+    }
     delete instance;
     instance = nullptr;
     currentScene = nullptr;

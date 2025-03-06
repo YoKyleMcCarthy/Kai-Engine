@@ -1,5 +1,5 @@
 #include "AssetManager.hpp"
-
+#include <string>
 AssetManager* AssetManager::instance = nullptr;
 
 AssetManager::AssetManager() {}
@@ -29,18 +29,17 @@ Asset* AssetManager::CheckIfLoaded(Asset* asset) {
 
 
 void AssetManager::LoadAsset(std::string path, AssetType type, std::string name = "") {
-    Asset* asset;
-    if(name == "") {
-        name = std::to_string(asset->id);
-    }
     std::cout << "Loading asset: " << name << std::endl;
 
-    asset = CheckIfLoaded(asset);
-
+    Asset* asset = nullptr;
     switch (type) {
         case AssetType::Texture:
             asset = new Texture(path, name, nullptr);
             break;
+    }
+    asset = CheckIfLoaded(asset);
+    if(name == "") {
+        name = std::to_string(asset->id);
     }
     assets[name] = asset;
     asset->Load();
@@ -54,15 +53,24 @@ Asset* AssetManager::asset(std::string name) {
     return assets[name];
 }
 
-void AssetManager::UnloadAsset(Asset* asset) {
-
-    if (assets.find(asset->name) == assets.end()) {
-        std::cout << "Asset not found: " << asset->name << std::endl;
-        return;
-    }
+bool AssetManager::UnloadAsset(Asset* asset) {
     asset->Unload();
+    return true;
 }
 
+
+bool AssetManager::UnloadAsset(std::string name) {
+    auto it = assets.find(name);
+    if (it == assets.end()) {
+        std::cout << "Asset not found: " << name << std::endl;
+        return false;
+    }
+
+    it->second->Unload();  // Assuming assets[name] is a pointer to an asset
+    assets.erase(it);      // Remove from the map if necessary
+
+    return true;
+}
 void AssetManager::ReloadAsset(Asset* asset) {
     if (assets.find(asset->name) == assets.end()) {
         std::cout << "Asset not found: " << asset->name << std::endl;

@@ -18,7 +18,7 @@ endif(APPLE)
 
 # Windows Need to change for later...
 if(WIN32)
-    target_link_libraries(${PROJECT_NAME} opengl32 glew32 SDL2 SDL2main SDL2_image SDL2_ttf SDL2_mixer SDL2_net)
+    target_link_libraries(${PROJECT_NAME} SDL3 SDL3_image)
     target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Windows/includes)
     target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Windows/libs)
 endif(WIN32)

@@ -19,7 +19,9 @@ public:
     void setCurrentScene(Scene* scene);
     void setGlobalScene(Scene* scene);
     void setRenderer(SDL_Renderer* renderer);
-    SDL_Renderer* getRenderer() { return renderer; }
+    KAI_INLINE Scene* getCurrentScene() { return currentScene; }
+    KAI_INLINE Scene* getGlobalScene() { return globalScene; }
+    KAI_INLINE SDL_Renderer* getRenderer() { return renderer; }
 
     void Update(float deltaTime);
     void Destroy();

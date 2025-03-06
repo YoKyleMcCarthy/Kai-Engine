@@ -7,6 +7,8 @@
 #include <Camera/Camera.hpp>
 #include <SDL3/SDL.h>
 #include <Math/Vec2.hpp>
+#include <iostream>
+#include <Editor/Editor.hpp>
 
 int main() {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
@@ -14,12 +16,21 @@ int main() {
     const int height = 720;
     Window window("Engine Dev alpha 0.1", Vec2<float>(width, height));
     SDL_Renderer* renderer = SDL_CreateRenderer(window.Get(), NULL);
+    if(renderer == NULL) {
+        std::cout << "Renderer: " << SDL_GetError() << std::endl; 
+    }
     SceneManager::GetInstance()->setRenderer(renderer);
     SceneManager::GetInstance()->setCurrentScene(new EntryScene());
     Camera* camera = new Camera(Vec2<float>(0,0), Vec2<float>(width,height));
     SceneManager::GetInstance()->camera = camera;
 
     auto lastTime = std::chrono::high_resolution_clock::now();
+
+    
+    Editor editor;
+    editor.Init();
+
+
 
     SDL_Event event;
     while(window.isOpen) {
@@ -40,11 +51,16 @@ int main() {
 
         // Update Everything here
         camera->Update(deltaTime);
-        SceneManager::GetInstance()->Update(deltaTime);
-        SceneManager::GetInstance()->Draw();
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255,255);
+        SDL_RenderClear(renderer);
+            SceneManager::GetInstance()->Update(deltaTime);
+            editor.Update(deltaTime);
+            SceneManager::GetInstance()->Draw();
+            editor.Draw();
+        SDL_RenderPresent(renderer);
 
     }
-
+    SceneManager::GetInstance()->Destroy();
     delete camera;
 
     return 0;

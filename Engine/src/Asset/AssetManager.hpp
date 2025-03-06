@@ -14,7 +14,8 @@ public:
     void LoadAsset(Asset* asset);
     void LoadAsset(std::string path, AssetType type, std::string name);
     Asset* asset(std::string name);
-    void UnloadAsset(Asset* asset);
+    bool UnloadAsset(Asset* asset);
+    bool UnloadAsset(std::string name);
     void ReloadAsset(Asset* asset);
     void DestroyAsset(Asset* asset);
     Asset* CheckIfLoaded(Asset* asset);
