@@ -3,7 +3,7 @@
 namespace py = pybind11;
 
 
-PYBIND11_MODULE(Transform, m) {
+PYBIND11_MODULE(Component, m) {
     py::class_<Transform>(m, "Transform")
         .def(py::init<>())
         .def(py::init<Vec2<float>, Vec2<float>, float>())

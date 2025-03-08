@@ -8,6 +8,7 @@ class Enemy:
     
     def _update(self, deltaTime):
         self.x += deltaTime
+        #print(self.x)
 
 def _create():
     return Enemy()
