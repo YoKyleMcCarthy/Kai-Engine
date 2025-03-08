@@ -94,6 +94,7 @@ public:
         os << "[x]: " << vec2.x << " [y]: " << vec2.y;
         return os;
     }
+
 };
 
 

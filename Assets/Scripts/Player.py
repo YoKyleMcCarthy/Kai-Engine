@@ -1,16 +1,15 @@
-import Vector2
+
 class Player:
     def __init__(self):
         print("Player created")
-        position = Vector2.Vec2f(0, 0)
-        print(position.x)
-        self.x = 1
+        self.vec = Vec2f(0.0, 0.0)
 
     def _draw(self, renderer):
         print("Player drawn")
     
     def _update(self, deltaTime):
-        self.x += deltaTime
+        self.vec.x += deltaTime
+        print(self.vec.x)
 
 def _create():
     return Player()
