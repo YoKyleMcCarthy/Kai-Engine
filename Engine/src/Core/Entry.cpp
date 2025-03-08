@@ -9,8 +9,14 @@
 #include <iostream>
 #include <Editor/Editor.hpp>
 
+#include <Python/Python.h>
+#include <Pybind11/embed.h>
+
+namespace py = pybind11;
+
 
 int main() {
+    py::scoped_interpreter guard{};
 
     
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
