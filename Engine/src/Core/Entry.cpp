@@ -14,6 +14,7 @@
 #include <Camera/Camera.hpp>
 #include <SDL3/SDL.h>
 #include <Editor/Editor.hpp>
+#include <enet/enet.h>
 
 namespace py = pybind11;
 

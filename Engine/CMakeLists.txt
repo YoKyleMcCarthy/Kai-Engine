@@ -18,7 +18,7 @@ endif(APPLE)
 
 # Windows Need to change for later...
 if(WIN32)
-    target_link_libraries(${PROJECT_NAME} SDL3 SDL3_image python313_d.lib)
+    target_link_libraries(${PROJECT_NAME} SDL3 SDL3_image python313_d.lib WinMM Ws2_32 enet)
     target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Windows/includes)
     target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Windows/libs)
 endif(WIN32)

@@ -9,7 +9,7 @@ class Player:
     
     def _update(self, deltaTime):
         self.vec.x += deltaTime
-        print(self.vec.x)
+        #print(self.vec.x)
 
 def _create():
     return Player()
