@@ -7,19 +7,24 @@
 #include <Asset/Texture.hpp>
 #include <Util/Timer.hpp>
 #include "world/World.hpp"
+#include <ECS/Entity.hpp>
 
 Timer timer;
+EntityManager manager;
 
 void EntryScene::Init() {
     std::cout << "Game initalized" << std::endl;
     AssetManager::GetInstance()->LoadAsset("./Assets/images/Box.png", AssetType::Texture, "Background");
+    
 }
 
 void EntryScene::Update(float deltaTime) {
-    if(timer.GetTimeInSeconds() > 3) {
-        timer.Stop();
-        SceneManager::GetInstance()->setCurrentScene(new World());
-    }
+    //if(timer.GetTimeInSeconds() > 3) {
+    //    timer.Stop();
+    //    SceneManager::GetInstance()->setCurrentScene(new World());
+    //}
+
+
 }
 
 void EntryScene::Draw() {

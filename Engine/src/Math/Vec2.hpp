@@ -9,7 +9,6 @@
 
 #include <cmath>  // For std::sqrt and std::pow
 
-
 template <typename T>
 class Vec2 {
 public:
@@ -96,5 +95,7 @@ public:
         return os;
     }
 };
+
+
 
 #endif

@@ -6,11 +6,13 @@
 #include <Window/Window.hpp>
 #include <Camera/Camera.hpp>
 #include <SDL3/SDL.h>
-#include <Math/Vec2.hpp>
 #include <iostream>
 #include <Editor/Editor.hpp>
 
+
 int main() {
+
+    
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
     const int width = 1080;
     const int height = 720;
@@ -47,8 +49,6 @@ int main() {
                     window.resize();
                     camera->size = window.windowSize;
             }
-        }
-
         // Update Everything here
         camera->Update(deltaTime);
         SDL_SetRenderDrawColor(renderer, 255, 255, 255,255);
@@ -59,6 +59,7 @@ int main() {
             editor.Draw();
         SDL_RenderPresent(renderer);
 
+        }
     }
     SceneManager::GetInstance()->Destroy();
     delete camera;

@@ -21,8 +21,8 @@ Asset* AssetManager::CheckIfLoaded(Asset* asset) {
         if(val->name == asset->name) {
             std::cout << "Asset name already used modifying name: " << asset->name << std::endl;
             asset->name += std::to_string(asset->id);
+            return asset;
         }
-        return asset;
     }
     return asset;
 }

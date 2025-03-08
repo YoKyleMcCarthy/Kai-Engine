@@ -11,14 +11,14 @@ add_definitions(-D_DEBUG)
 
 # MacOS
 if(APPLE)
-    target_link_libraries(${PROJECT_NAME} libSDL3.0.dylib libSDL3_image.0.2.0.dylib)
+    target_link_libraries(${PROJECT_NAME} libSDL3.0.dylib libSDL3_image.0.2.0.dylib )
     target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Mac/includes)
     target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Mac/libs)
 endif(APPLE)
 
 # Windows Need to change for later...
 if(WIN32)
-    target_link_libraries(${PROJECT_NAME} SDL3 SDL3_image)
+    target_link_libraries(${PROJECT_NAME} SDL3 SDL3_image python313_d.lib)
     target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Windows/includes)
     target_link_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/Windows/libs)
 endif(WIN32)
